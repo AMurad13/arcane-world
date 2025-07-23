@@ -1,0 +1,140 @@
+.header {
+  position: absolute;
+
+  width: 100%;
+
+  z-index: 10;
+  
+  display: flex;
+  align-items: center;
+
+  min-height: var(--header-height);
+  &-social {
+    &-link {
+      svg {
+        fill: rgba(var(--cl-w), .75);
+        height: 24px;
+        transition: fill 300ms ease;
+      }
+      @include hover {
+        svg {
+          fill: rgba(var(--cl-w), 1);
+        }
+      }
+    }
+  }
+  &-container {
+    --container-width: 100%;
+  }
+  &-lang {
+    position: relative;
+    &-visible {
+      cursor: pointer;
+    }
+    &-hidden {
+      position: absolute;
+
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+
+      padding-top: 1rem;
+
+      pointer-events: none;
+    }
+    &-list {
+      opacity: 0;
+      transform: translateY(12px);
+
+      transition: opacity 300ms ease, transform 300ms ease;
+
+      will-change: transform, opacity;
+    }
+    &-flag {
+      max-width: 36px;
+    }
+    &-list {
+      display: flex;
+      flex-direction: column;
+      grid-gap: 16px 0;
+
+      background-color: rgba(var(--cl-w), .15);
+      backdrop-filter: blur(4px);
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #AC875E;
+
+      &__item {
+        transition: transform 300ms ease;
+
+        will-change: transform;
+
+        @include hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+    &-arrow {
+      max-width: 14px;
+
+      transition: transform 300ms ease;
+    }
+    &-visible {
+      display: flex;
+      align-items: center;
+      grid-gap: 8px;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    @include hover {
+      .header-lang-list {
+        transform: translate(0);
+        opacity: 1;
+      }
+      .header-lang-arrow {
+        transform: scaleY(-1);
+      }
+      .header-lang-hidden {
+          pointer-events: all;
+      }
+    }
+  }
+  &-flex {
+    display: flex;
+    align-items: center;
+
+    grid-gap: clamp(40px, 4.625vw, 74px);
+    &--aside {
+      grid-gap: clamp(24px, 2vw, 32px);
+    }
+  }
+  &-body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  &-logo {
+    max-width: 120px;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  grid-gap: clamp(48px, 5.25vw, 84px);
+  &-link {
+    font-family: var(--ff-sec);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: clamp(16px, 1.125vw, 18px);
+
+    transition: color 300ms ease;
+
+    @include hover {
+      color: #dad0a4;
+    }
+    &--active {
+      color: #dad0a4;
+    }
+  }
+}

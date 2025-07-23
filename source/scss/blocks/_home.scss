@@ -1,0 +1,91 @@
+.home {
+  --section-pt: var(--header-h);
+  --section-pb: 60px;
+  --inner-spacing: 60px;
+
+  &::before {
+    display: none;
+  }
+
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+
+  &-body {
+    display: flex;
+    flex-direction: column;
+    grid-gap: var(--inner-spacing);
+    align-items: flex-start;
+  }
+  &-logo {
+    max-width: 640px;
+  }
+  &-footer {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+  &-aside {
+    display: flex;
+    align-items: center;
+    padding-left: 32px;
+    background-image: url("../img/home-timer-wrapper.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+    align-self: center;
+
+    height: 100px;
+    &__title {
+      font-size: clamp(24px, 1.875rem, 30px);
+      font-family: var(--ff-sec);
+      letter-spacing: 0.4px; 
+      text-transform: uppercase;
+      font-weight: 700;
+      span {
+        color: #DAD0A4;
+      }
+    }
+  }
+  &-slider {  
+    max-width: 840px;
+    overflow: hidden;
+    &-pagination {
+      display: flex;
+      align-items: center;
+      grid-gap: 10px;
+
+      margin-top: 26px;
+    }
+    &-heading {
+      margin-bottom: 20px;
+    }
+    &-description {
+      font-size: clamp(16px, 1.25vw, 20px);
+    }
+  }
+  .swiper-pagination-bullet {
+
+    background-color: #6D656E;
+    display: block;
+    border-radius: 50%;
+    width: 14px;
+    aspect-ratio: 1;
+
+    cursor: pointer;
+
+    transition: background-color 300ms ease;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #F2B464;
+  }
+}
+
+@include laptop {
+  .home {
+    &-logo {
+      max-width: 360px;
+    }
+  }
+}

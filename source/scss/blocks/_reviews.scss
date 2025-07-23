@@ -1,0 +1,108 @@
+.reviews {
+  &-heading {
+    margin-bottom: 80px;
+  }
+  &-grid {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-gap: clamp(20px, 2vw, 32px);
+
+    &-item {
+      --header-flex-direction: column-reverse;
+      --header-jc: initial;
+      --heading-text-align: center;
+      --heading-align-items: center;
+      --item-min-h: 320px;
+
+      min-height: var(--item-min-h);
+
+      grid-column: span 2;
+      background-color: rgba(var(--cl-w), .025);
+      backdrop-filter: blur(12px);
+      border-radius: 14px;
+      border: 3px solid #5e5e5e;
+      padding: clamp(20px, 1.5vw, 24px) clamp(16px, 1vw, 20px);
+
+      p {
+        text-align: var(--heading-text-align);
+        line-height: 140%;
+        color: #c2c2c2;
+        font-size: clamp(16px, 1.125vw, 18px);
+      }
+
+      &--span {
+        --header-flex-direction: row;
+        --header-jc: space-between;
+        --heading-text-align: left;
+        --heading-align-items: flex-start;
+
+        grid-column: span 4;
+      }
+      &__icon {
+        width: clamp(54px, 4.625vw, 74px);
+        aspect-ratio: 1;
+
+        background-color: #aaaaaa;
+        border-radius: 16px;
+      }
+      &__heading {
+        display: flex;
+        flex-direction: column;
+        align-items: var(--heading-align-items);
+
+        text-align: var(--heading-text-align);
+        text-transform: uppercase;
+        font-family: var(--ff-sec);
+        font-weight: 700;
+        &-hl {
+          color: #dad0a4;
+          font-size: clamp(16px, 1.25vw, 20px);
+        }
+        &-title {
+          font-size: clamp(24px, 1.875vw, 30px);
+        }
+      }
+      &__header {
+        grid-gap: 20px;        
+        display: flex;
+        align-items: center;
+        flex-direction: var(--header-flex-direction);
+        justify-content: var(--header-jc);
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
+
+@include laptop {
+  .reviews {
+    &-grid {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 12px;
+
+      &-item {
+        --item-min-h: 260px;
+
+        &--span {
+          grid-column: span 4;
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .reviews {
+    &-grid {
+      display: flex;
+      flex-direction: column;
+      &-item {
+        &--span {
+          --heading-align-items: center;
+          --heading-text-align: center;
+          --header-flex-direction: column-reverse;
+        }
+      }
+    }
+  }
+}

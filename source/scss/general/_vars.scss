@@ -1,0 +1,40 @@
+// --------------- hex to rgba mixin ---------------
+@function HexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+:root {
+// --------------- default global variable ---------------
+  --header-height: 120px;
+  --body-bg: #000000;
+  --body-font-size: 16px;
+  --content-width: 1386px;
+  --container-offset: 20px;
+  --global-color: var(--cl-w);
+  --container-width: calc(var(--content-width) + (var(--container-offset) * 2));
+
+// --------------- default JS variable ---------------
+  // --header-height: 60px;
+
+// --------------- default scroll variable ---------------
+
+// --------------- default slect variable ---------------
+
+// --------------- default font-family variable ---------------
+  --ff: "Intro", sans-serif;
+  --ff-sec: "Cormorant", sans-serif;
+  --ff-ph: "Philosopher", sans-serif;
+
+// --------------- default text color variable ---------------
+  // --burger-color: #{HexToRGB(#00d655)};
+
+  --cl-w: #{HexToRGB(#ffffff)}; // rgba(var(--cl-a),1.0);
+  --cl-b: #{HexToRGB(#000000)}; // rgba(var(--cl-b),1.0);
+
+// --------------- default border color color variable ---------------
+  --br-a: #FAFE18; // var(--br-a);
+  --br-b: #858585; // var(--br-b);
+
+// -------------
+
+
+}

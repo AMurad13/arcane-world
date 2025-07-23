@@ -1,0 +1,113 @@
+:root {
+  --root-button-text-size_primary: 26px;
+  --root-button-ff: var(--ff-sec);
+  --root-button-text-weight: 700;
+  --root-button-min-w_primary: 418px;
+}
+
+.button {
+  @include dfc;
+
+  font-weight: var(--root-button-text-weight);
+  font-family: var(--root-button-ff);  
+  text-transform: uppercase;
+
+  transition: transform 300ms ease;
+  will-change: transform;
+
+  width: fit-content;
+
+  transition: opacity 300ms ease, transform 300ms ease;
+  opacity: .75;
+
+  @include hover {
+    opacity: 1;
+  }
+}
+
+.button-primary {
+  min-height: 132px; 
+
+  font-size: var(--root-button-text-size_primary);
+    
+  background-image: url("../img/button-bg.png");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  
+  min-width: var(--root-button-min-w_primary);
+
+  @include hover {
+    transform: scale(1.025);
+  }
+}
+
+.button-sm {
+  min-width: 184px;
+  min-height: 64px;
+
+  position: relative;
+  &::after,
+  &::before {
+    @include psevdo;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+
+    bottom: 0;
+    left: 0;
+
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;  
+
+    pointer-events: none;
+
+    transition: opacity 300ms ease, transform 300ms ease;
+    will-change: transform, opacity;
+  }
+  &::before {
+    transform: translateX(1px);
+    background-image: url("../img/button-sm.png");
+  }
+  &::after {
+    opacity: 0;
+    transform: scale(.95);
+    background-image: url("../img/button-sm-filled.png");
+  }
+  &:not(.button-sm--filled) {
+    @include hover {
+      &::after {
+        opacity: 1;
+        transform: scale(1);
+      }
+      &::before {
+        transform: translateX(1px) scale(0.95);
+        opacity: 0;
+      }
+    }    
+  }
+  &--filled {
+    &::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+    &::before {
+      display: none;
+    }
+    @include hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+@include laptop {
+  :root {
+    --root-button-min-w_primary: 240px;    
+    --root-button-text-size_primary: 20px; 
+  }
+  .button {
+    &-primary {
+      min-height: 84px;
+    } 
+  }
+}
