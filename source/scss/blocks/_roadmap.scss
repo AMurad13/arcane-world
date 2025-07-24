@@ -49,6 +49,7 @@
       }
        img {
         max-width: 58px;
+        transform: scale(2);
       }
       &__stage {
         font-size: clamp(18px, 1.25vw, 20px);
